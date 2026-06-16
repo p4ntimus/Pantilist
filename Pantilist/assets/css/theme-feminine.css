@@ -1,0 +1,30 @@
+:root {
+  --bg: #faf6fb;
+  --text: #333;
+  --card: #ffffff;
+  --accent: #ff8ac2;
+  --ad-bg: #ffe9f5;
+  --ad-text: #333;
+}
+
+body {
+  background: linear-gradient(180deg, #ffe9f5, #faf6fb);
+  color: #333;
+}
+
+li {
+  border: 1px solid #ffd1e8;
+  box-shadow: 0 0 8px #ffb7e855;
+}
+
+button {
+  background: #ff8ac2;
+  color: white;
+  box-shadow: 0 0 10px #ff8ac255;
+}
+
+input {
+  background: #fff;
+  border: 1px solid #ffb7e8;
+  color: #333;
+}

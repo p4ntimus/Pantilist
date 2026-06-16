@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pantilist</title>
+
+  <meta name="theme-color" content="#000000" id="theme-color-meta">
+  <meta name="description" content="Einfache, schöne Einkaufsliste mit Favoriten, Kategorien, Themes und PWA Support.">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="manifest" href="manifest.json">
+
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
+
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/theme-default.css" id="theme-default">
+  <link rel="stylesheet" href="assets/css/theme-forest.css" id="theme-forest" disabled>
+  <link rel="stylesheet" href="assets/css/theme-diablo.css" id="theme-diablo" disabled>
+  <link rel="stylesheet" href="assets/css/theme-blackfantasy.css" id="theme-blackfantasy" disabled>
+  <link rel="stylesheet" href="assets/css/theme-unicorn.css" id="theme-unicorn" disabled>
+</head>
+
+<body class="size-normal">
+
+  <header class="app-header">
+    <div class="title-block">
+      <h1>Einkaufsliste</h1>
+      <span class="subtitle">Dein smarter Einkaufshelfer</span>
+    </div>
+    <button class="settings-btn" onclick="openSettings()">⚙️</button>
+  </header>
+
+  <div class="ad-top">Hier könnte Werbung zur Finanzierung sein.</div>
+
+  <main>
+
+    <!-- Kategorie-Auswahl -->
+    <section class="list-selector">
+      <label for="categorySelect">Kategorie:</label>
+      <select id="categorySelect" onchange="changeActiveCategory()"></select>
+    </section>
+
+    <!-- Eingabe -->
+    <section class="input-section">
+      <div class="input-row">
+        <input id="itemInput" placeholder="Neuer Eintrag">
+        <button class="add-btn" onclick="addItem()">+</button>
+      </div>
+
+      <!-- Favoriten -->
+      <div class="favorites-row">
+        <span class="favorites-label">Schnell hinzufügen:</span>
+        <div class="favorites-buttons" id="favoritesMain"></div>
+      </div>
+    </section>
+
+    <!-- Suche -->
+    <section class="search-section">
+      <input id="searchInput" placeholder="Liste durchsuchen…" oninput="filterList()">
+    </section>
+
+    <!-- Liste -->
+    <section class="list-section">
+      <ul id="list"></ul>
+      <button class="clear-done" onclick="clearDone()">Erledigte löschen</button>
+    </section>
+
+  </main>
+
+  <footer class="ad-footer">Hier könnte Werbung zur Finanzierung sein.</footer>
+
+  <!-- SETTINGS PANEL -->
+  <div id="settingsPanel" class="settings-panel hidden">
+    <h2>Einstellungen</h2>
+
+    <label for="themeSelect">Theme:</label>
+    <select id="themeSelect" onchange="changeTheme()">
+      <option value="default">Sanft & freundlich</option>
+      <option value="forest">Wald & Natur</option>
+      <option value="diablo">Diablo</option>
+      <option value="blackfantasy">Black Fantasy</option>
+      <option value="unicorn">Einhorn</option>
+    </select>
+
+    <label for="sizeSelect">Layout-Größe:</label>
+    <select id="sizeSelect" onchange="changeSize()">
+      <option value="normal">Normal</option>
+      <option value="large">Groß</option>
+      <option value="xlarge">Extra groß</option>
+    </select>
+
+    <hr class="settings-separator">
+
+    <!-- Kategorien verwalten -->
+    <h3>Kategorien verwalten</h3>
+
+    <div class="cat-editor">
+      <div class="cat-editor-list" id="categoryEditor"></div>
+
+      <div class="cat-editor-add">
+        <input id="catInput" placeholder="Neue Kategorie (z.B. Getränke)">
+        <button onclick="saveNewCategory()">Hinzufügen</button>
+      </div>
+
+      <p class="cat-hint">
+        Tipp: Kategorien per Drag & Drop sortieren.  
+        Standard-Kategorien können nicht gelöscht werden.
+      </p>
+    </div>
+
+    <hr class="settings-separator">
+
+    <!-- Favoriten verwalten -->
+    <h3>Favoriten verwalten</h3>
+
+    <div class="fav-editor">
+      <div class="fav-editor-list" id="favoritesEditor"></div>
+
+      <div class="fav-editor-add">
+        <input id="favInput" placeholder="Neuer Favorit (z.B. Nudeln)">
+        <button onclick="saveNewFavorite()">Hinzufügen</button>
+      </div>
+
+      <p class="fav-hint">
+        Tipp: Favoriten per Drag & Drop sortieren, lang drücken / Rechtsklick zum Löschen.
+      </p>
+    </div>
+
+    <button class="close-btn" onclick="closeSettings()">Schließen</button>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+
+</body>
+</html>

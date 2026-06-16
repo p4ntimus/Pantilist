@@ -1,0 +1,46 @@
+{
+  "name": "Pantilist",
+  "short_name": "Liste",
+  "description": "Moderne Einkaufsliste mit Kategorien, Favoriten, Themes und Offline-Funktion.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+
+  "categories": ["productivity", "shopping", "utilities"],
+
+  "shortcuts": [
+    {
+      "name": "Haushalt",
+      "short_name": "Haushalt",
+      "url": "./index.html?list=haushalt"
+    },
+    {
+      "name": "Drogerie",
+      "short_name": "Drogerie",
+      "url": "./index.html?list=drogerie"
+    },
+    {
+      "name": "Sonstiges",
+      "short_name": "Sonstiges",
+      "url": "./index.html?list=sonstiges"
+    }
+  ]
+}

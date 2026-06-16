@@ -1,0 +1,11 @@
+:root {
+  --bg: linear-gradient(180deg, #ffe9f5, #e8f0ff);
+  --text: #4a3b5f;
+  --card: #ffffffcc;
+
+  --accent: #ff8ac2;
+  --accent-soft: #ffe0ff;
+
+  --ad-bg: #fff0ff;
+  --ad-text: #6b4b7a;
+}
