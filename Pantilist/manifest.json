@@ -1,6 +1,6 @@
 {
   "name": "Pantilist",
-  "short_name": "Liste",
+  "short_name": "Pantilist",
   "description": "Moderne Einkaufsliste mit Kategorien, Favoriten, Themes und Offline-Funktion.",
   "start_url": "./index.html",
   "scope": "./",
