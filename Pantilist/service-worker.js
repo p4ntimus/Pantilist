@@ -18,6 +18,7 @@ const ASSETS = [
   "./assets/css/theme-diablo.css",
   "./assets/css/theme-blackfantasy.css",
   "./assets/css/theme-unicorn.css",
+   "./assets/css/theme-coreblue.css",
 
   "./assets/js/app.js"
 ];
