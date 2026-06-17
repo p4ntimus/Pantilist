@@ -501,6 +501,7 @@ function changeTheme() {
   document.getElementById("theme-diablo").disabled = theme !== "diablo";
   document.getElementById("theme-blackfantasy").disabled = theme !== "blackfantasy";
   document.getElementById("theme-unicorn").disabled = theme !== "unicorn";
+   document.getElementById("theme-coreblue").disabled = theme !== "coreblue";
 
   localStorage.setItem(THEME_KEY, theme);
 }
