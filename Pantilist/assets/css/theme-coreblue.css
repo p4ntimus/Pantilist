@@ -1,31 +1,47 @@
+/* ============================================================
+   PANTILIST - AZURE DARK PREMIUM THEME
+   Diese Datei NACH der base.css laden.
+============================================================ */
+
 :root {
+  /* Farben */
   --bg: #08111f;
-  --bg-secondary: #0f1c2e;
-
-  --card: #14243a;
-  --card-hover: #1a304d;
-
   --text: #eef4ff;
-  --text-secondary: #a5b4cc;
+  --card: #14243a;
 
   --accent: #007fff;
-  --accent-hover: #2994ff;
-  --accent-glow: rgba(0, 127, 255, 0.35);
-
-  --border: rgba(120, 170, 230, 0.15);
+  --accent-soft: rgba(0, 127, 255, 0.12);
 
   --ad-bg: #11233a;
-  --ad-text: #d9e8ff;
+  --ad-text: #d6e6ff;
 
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  /* Zusätzliche Theme-Variablen */
+  --bg-secondary: #0f1c2e;
+  --card-hover: #1a304d;
+
+  --text-muted: #9db0cc;
+
+  --border: rgba(155, 185, 230, 0.18);
+  --separator: rgba(255, 255, 255, 0.08);
+
+  --danger: #ff6b6b;
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  --glow: 0 0 24px rgba(0, 127, 255, 0.25);
 }
+
+/* ============================================================
+   GLOBAL
+============================================================ */
 
 body {
   background:
     radial-gradient(
       circle at top,
       rgba(0, 127, 255, 0.12),
-      transparent 40%
+      transparent 35%
     ),
     linear-gradient(
       180deg,
@@ -34,29 +50,60 @@ body {
     );
 
   color: var(--text);
-  min-height: 100vh;
 }
 
-li {
+.subtitle,
+.cat-hint,
+.fav-hint {
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   INPUTS & SELECTS
+============================================================ */
+
+input,
+select {
   background: var(--card);
+  color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 16px;
-
-  box-shadow: var(--shadow);
-
-  transition:
-    transform 0.2s ease,
-    background 0.2s ease,
-    border-color 0.2s ease;
 }
 
-li:hover {
-  background: var(--card-hover);
-  border-color: rgba(0, 127, 255, 0.3);
-  transform: translateY(-2px);
+input::placeholder {
+  color: var(--text-muted);
 }
 
-button {
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent);
+
+  box-shadow:
+    0 0 0 3px rgba(0, 127, 255, 0.15);
+}
+
+/* Spezifische Selektoren aus base.css */
+
+.list-selector select,
+.input-row input,
+.search-section input,
+.settings-panel select,
+.cat-editor-add input,
+.fav-editor-add input {
+  background: var(--card);
+  color: var(--text);
+  border-color: var(--border);
+}
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+
+.add-btn,
+.clear-done,
+.close-btn,
+.cat-editor-add button,
+.fav-editor-add button {
   background: linear-gradient(
     135deg,
     var(--accent),
@@ -64,60 +111,135 @@ button {
   );
 
   color: #ffffff;
-  border: none;
-  border-radius: 12px;
-
-  box-shadow:
-    0 0 20px var(--accent-glow),
-    0 8px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--glow);
 
   transition:
     transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
-}
-
-button:hover {
-  background: linear-gradient(
-    135deg,
-    var(--accent-hover),
-    var(--accent)
-  );
-
-  transform: translateY(-1px);
-
-  box-shadow:
-    0 0 30px rgba(0, 127, 255, 0.45),
-    0 12px 24px rgba(0, 0, 0, 0.3);
-}
-
-button:active {
-  transform: translateY(0);
-}
-
-input {
-  background: var(--card);
-  color: var(--text);
-
-  border: 1px solid var(--border);
-  border-radius: 12px;
-
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
-
-  transition:
-    border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
 
-input::placeholder {
-  color: var(--text-secondary);
-}
-
-input:focus {
-  outline: none;
-  border-color: var(--accent);
+.add-btn:hover,
+.clear-done:hover,
+.close-btn:hover,
+.cat-editor-add button:hover,
+.fav-editor-add button:hover {
+  transform: translateY(-1px);
 
   box-shadow:
-    0 0 0 3px rgba(0, 127, 255, 0.15),
-    0 0 20px rgba(0, 127, 255, 0.15);
+    0 0 32px rgba(0, 127, 255, 0.35);
+}
+
+.add-btn:active,
+.clear-done:active,
+.close-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   LIST ITEMS
+============================================================ */
+
+li {
+  background: var(--card);
+  border: 1px solid var(--border);
+
+  box-shadow: var(--shadow-sm);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+li:hover {
+  background: var(--card-hover);
+  transform: translateY(-1px);
+}
+
+li.done {
+  opacity: 0.45;
+}
+
+/* ============================================================
+   FAVORITES
+============================================================ */
+
+.favorites-buttons button {
+  background: var(--accent-soft);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   ADS
+============================================================ */
+
+.ad-top,
+.ad-footer,
+.ad-inline {
+  background: var(--ad-bg);
+  color: var(--ad-text);
+
+  border: 1px solid var(--border);
+}
+
+/* ============================================================
+   SETTINGS
+============================================================ */
+
+.settings-btn {
+  color: var(--text);
+}
+
+.settings-panel {
+  background: var(--bg-secondary);
+
+  border-top: 1px solid var(--border);
+
+  box-shadow: var(--shadow-md);
+}
+
+.settings-separator {
+  border-top: 1px solid var(--separator);
+}
+
+.settings-panel::-webkit-scrollbar-thumb {
+  background: var(--accent);
+}
+
+/* ============================================================
+   CATEGORY & FAVORITES EDITOR
+============================================================ */
+
+.cat-editor-item,
+.fav-editor-item {
+  background: var(--accent-soft);
+
+  border: 1px solid var(--border);
+}
+
+.cat-delete,
+.fav-delete {
+  color: var(--danger);
+}
+
+/* ============================================================
+   OPTIONAL: SCROLLBAR
+============================================================ */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 127, 255, 0.4);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 127, 255, 0.6);
 }
