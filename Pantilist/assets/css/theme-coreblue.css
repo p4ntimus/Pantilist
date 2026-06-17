@@ -1,0 +1,34 @@
+:root {
+  --bg: #f4faff;
+  --text: #2d3748;
+  --card: #ffffff;
+  --accent: #2ea8ff;
+  --ad-bg: #dff2ff;
+  --ad-text: #2d3748;
+}
+
+body {
+  background: linear-gradient(180deg, #dff2ff, #f4faff);
+  color: var(--text);
+}
+
+li {
+  border: 1px solid #b9e2ff;
+  box-shadow: 0 0 8px rgba(46, 168, 255, 0.2);
+}
+
+button {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 0 10px rgba(46, 168, 255, 0.35);
+}
+
+button:hover {
+  background: #1d96f0;
+}
+
+input {
+  background: var(--card);
+  border: 1px solid #8fd0ff;
+  color: var(--text);
+}
