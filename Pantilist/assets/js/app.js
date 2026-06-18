@@ -16,9 +16,9 @@ const categoryEditor = document.getElementById("categoryEditor");
    STORAGE KEYS
 ============================================================ */
 
-const LISTS_KEY = "shoppingLists_v2";
-const CATEGORIES_KEY = "shoppingCategories_v2";
-const FAVORITES_KEY = "shoppingFavorites_v2";
+const LISTS_KEY = "shoppingLists_v5";
+const CATEGORIES_KEY = "shoppingCategories_v5";
+const FAVORITES_KEY = "shoppingFavorites_v5";
 const THEME_KEY = "shoppingTheme";
 const SIZE_KEY = "shoppingSize";
 
