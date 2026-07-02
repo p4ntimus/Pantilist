@@ -1,0 +1,218 @@
+/* ============================================================
+   DIABLO THEME – Neutral Dark (Stefan Edition)
+   Modern, dunkel, leicht dämonisch, ohne Übertreibung
+============================================================ */
+
+/* Hintergrund + Text */
+body {
+    background: #0d0d0f; /* tiefes Schwarzgrau */
+    color: #d6d1dc;      /* helles, neutrales Violettgrau */
+}
+
+main {
+    background: transparent;
+}
+
+/* Cards */
+.card {
+    background: #151518; /* dunkles Grau */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(90, 70, 110, 0.35); /* dezente violette Kante */
+}
+
+/* Header */
+.app-header {
+    background: rgba(20, 20, 24, 0.95);
+    border: 1px solid rgba(110, 90, 130, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+}
+
+.app-header h1 {
+    color: #b38df2; /* sanftes Arcane‑Violett */
+}
+
+.subtitle {
+    color: #8e7fa3;
+    font-size: 0.9rem;
+}
+
+/* Favorites */
+.favorites-buttons button {
+    background: rgba(40, 40, 50, 0.85);
+    color: #d6d1dc;
+    border: 1px solid rgba(120, 100, 150, 0.4);
+}
+
+.favorites-buttons button:hover {
+    background: rgba(55, 55, 70, 0.9);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="search"],
+input[type="number"] {
+    background: #1a1a1f;
+    border: 2px solid #3a2f4a;
+    color: #e3dff0;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus {
+    border-color: #7a5cff; /* arcane glow */
+    box-shadow: 0 0 0 3px rgba(122, 92, 255, 0.35);
+}
+
+/* Add Buttons */
+.add-btn,
+#catAddBtn,
+#favAddBtn,
+.add-list-btn {
+    background: #7a5cff; /* arcane violet */
+    color: #ffffff;
+}
+
+.add-btn:hover,
+#catAddBtn:hover,
+#favAddBtn:hover,
+.add-list-btn:hover {
+    background: #5a3ad6;
+}
+
+/* Icon Buttons */
+.icon-btn {
+    background: rgba(40, 40, 50, 0.95);
+    color: #cfc9dd;
+}
+
+.icon-btn:hover {
+    background: rgba(60, 60, 80, 0.95);
+}
+
+/* Floating Clear Button */
+.clear-done {
+    background: #a03cff; /* dämonisch violett */
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(160, 60, 255, 0.25);
+}
+
+.clear-done:hover {
+    background: #7d2fcc;
+}
+
+/* Settings Panel */
+.settings-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 20px 20px 0 0;
+    padding: 18px;
+    background: #151518;
+    box-shadow: 0 -10px 24px rgba(0, 0, 0, 0.55);
+    transform: translateY(100%);
+    transition: transform 0.35s ease, opacity 0.25s ease;
+    opacity: 0;
+    z-index: 9999;
+}
+
+.settings-panel.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.settings-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+.settings-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.settings-panel .settings-inner {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.settings-panel h2,
+.settings-panel h3 {
+    color: #d6d1dc;
+}
+
+.settings-panel label {
+    opacity: 0.9;
+    color: #cfc9dd00;
+    font-weight: 600;
+}
+
+.settings-panel select,
+.settings-panel input {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(110, 90, 130, 0.45);
+    background: #1a1a1f;
+    color: #e3dff0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Editor Items */
+.cat-editor-item,
+.fav-editor-item {
+    background: #1a1a1f;
+    border: 1px solid rgba(110, 90, 130, 0.45);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
+    color: #d6d1dc;
+}
+
+.cat-color-input {
+    border: 1px solid rgba(110, 90, 130, 0.45);
+}
+
+.cat-emoji-input {
+    background: #1a1a1f;
+    border: 1px solid rgba(110, 90, 130, 0.45);
+    color: #e3dff0;
+}
+
+.cat-delete,
+.fav-delete {
+    background: #7a5cff;
+    color: #ffffff;
+}
+
+.cat-delete:hover,
+.fav-delete:hover {
+    background: #5a3ad6;
+}
+
+/* List Items */
+.list-section.card {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+#list li {
+    width: 100% !important;
+    display: flex;
+    background: var(--item-bg, rgba(30, 30, 40, 0.9)) !important;
+    color: #e3dff0;
+    box-shadow: inset 0 0 0 1px rgba(80, 60, 110, 0.25);
+}
+
+#list li .item-text,
+#list li .item-emoji {
+    color: #e3dff0;
+}

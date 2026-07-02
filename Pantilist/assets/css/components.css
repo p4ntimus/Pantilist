@@ -1,0 +1,250 @@
+/* ============================================================
+   CARDS
+============================================================ */
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius-medium);
+  padding: 16px;
+  margin: 12px;
+  box-shadow: var(--shadow-card);
+}
+
+/* ============================================================
+   HEADER
+============================================================ */
+
+.app-header {
+  background: var(--card);
+  border-radius: 0 0 var(--radius-large) var(--radius-large);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  z-index: 2000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* ============================================================
+   CATEGORY TABS
+============================================================ */
+
+.tabs-container {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 4px;
+  scroll-snap-type: x proximity;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tabs-container::-webkit-scrollbar {
+  display: none;
+}
+
+.tabs-container button {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  background: var(--tab-bg);
+  border: 2px solid var(--tab-border);
+  border-radius: var(--radius-small);
+  font-size: 0.95rem;
+  color: var(--text);
+  white-space: nowrap;
+  transition: 0.2s ease;
+}
+
+.tabs-container button:hover {
+  background: var(--accent-soft);
+}
+
+.tabs-container button.active {
+  background: var(--tab-bg-active);
+  border-color: var(--tab-bg-active);
+  color: var(--tab-text-active);
+  font-weight: 600;
+}
+
+/* ============================================================
+   FAVORITEN
+============================================================ */
+
+.favorites-buttons button {
+  flex: 0 0 auto;
+  padding: 8px 14px;
+  background: var(--fav-bg);
+  border: none;
+  border-radius: var(--radius-large);
+  font-size: 0.9rem;
+  color: var(--text);
+  white-space: nowrap;
+  transition: 0.2s;
+}
+
+.favorites-buttons button:hover {
+  background: var(--fav-bg-hover);
+  color: var(--fav-text-hover);
+}
+
+/* ============================================================
+   INPUT
+============================================================ */
+
+.input-row input {
+  flex: 1;
+  padding: 12px;
+  border-radius: var(--radius-medium);
+  border: 2px solid var(--input-border);
+  background: var(--card);
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.add-btn {
+  padding: 12px 18px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: var(--radius-medium);
+  font-size: 1.4rem;
+  font-weight: bold;
+  box-shadow: var(--shadow-soft);
+  transition: 0.2s;
+}
+
+.add-btn:hover {
+  background: var(--btn-bg-hover);
+}
+
+/* ============================================================
+   LISTE
+============================================================ */
+
+.list-section li {
+  padding: 14px;
+  margin-bottom: 10px;
+  background: var(--card);
+  border-radius: var(--radius-medium);
+  box-shadow: var(--shadow-soft);
+  font-size: 1rem;
+  transition: 0.2s;
+  color: var(--text);
+}
+
+.list-section li.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* ============================================================
+   FLOATING DELETE BUTTON
+============================================================ */
+
+.clear-done {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 14px 20px;
+  border-radius: var(--radius-large);
+  border: none;
+  font-size: 1rem;
+  box-shadow: var(--shadow-card);
+  transition: 0.2s;
+  z-index: 100;
+}
+
+.clear-done:hover {
+  background: var(--btn-bg-hover);
+}
+
+/* ============================================================
+   SETTINGS PANEL
+============================================================ */
+
+
+.settings-panel button {
+  padding: 12px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: var(--radius-medium);
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Ensure buttons inside settings panel use full-width close button sizing where appropriate */
+.settings-panel .close-btn {
+  width: 100%;
+  margin-top: 18px;
+}
+
+/* ============================================================
+   DELETE BUTTON – IMMER SICHTBAR, IMMER KLAR
+============================================================ */
+
+.cat-delete,
+.fav-delete {
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--accent);      /* IMMER sichtbar */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-soft);
+  transition: 0.25s ease;
+}
+
+.trash-icon {
+  width: 18px;
+  height: 18px;
+  stroke: #fff;                   /* IMMER sichtbar */
+  stroke-width: 2;
+  pointer-events: none;
+  transition: 0.25s ease;
+}
+
+.cat-delete:hover,
+.fav-delete:hover {
+  background: var(--btn-bg-hover);
+  transform: translateY(-2px);
+}
+
+.cat-delete:hover .trash-icon,
+.fav-delete:hover .trash-icon {
+  stroke: #fff;
+  transform: rotate(-8deg);
+}
+
+.fav-editor-add input {
+    flex: 1;
+}
+
+.fav-editor-add select {
+    width: 40%;
+    min-width: 120px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--input-border);
+    background: var(--card);
+    color: var(--text);
+}

@@ -1,0 +1,54 @@
+/* ============================================================
+   UNICORN THEME
+============================================================ */
+
+[data-theme="unicorn"] {
+  /* Hintergrund */
+  --bg: linear-gradient(180deg, #ffe9f5, #e8f0ff);
+  --bg-gradient: linear-gradient(180deg, #ffe9f5, #e8f0ff);
+
+  /* Text */
+  --text: #4a3b5f;
+  --text-muted: #6b4b7a;
+
+  /* Karten */
+  --card: #ffffffcc;
+  --card-hover: #ffffffee;
+
+  /* Akzent */
+  --accent: #ff8ac2;
+  --accent-soft: #ffe0ff;
+
+  /* Tabs */
+  --tab-bg: #ffffffcc;
+  --tab-border: #ffd6f7;
+  --tab-bg-active: #ff8ac2;
+  --tab-text-active: #ffffff;
+
+  /* Favoriten */
+  --fav-bg: #ffe0ff;
+  --fav-bg-hover: #ff8ac2;
+  --fav-text-hover: #ffffff;
+
+  /* Buttons */
+  --btn-bg: #ff8ac2;
+  --btn-text: #ffffff;
+  --btn-bg-hover: #ff6fb6;
+
+  /* Inputs */
+  --input-border: #ffd6f7;
+
+  /* Anzeigen */
+  --ad-bg: #fff0ff;
+  --ad-text: #6b4b7a;
+
+  /* Schatten */
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-card: 0 6px 18px rgba(0,0,0,0.08);
+
+  /* Separator */
+  --separator: rgba(0,0,0,0.08);
+
+  /* Danger */
+  --danger: #ff6b6b;
+}

@@ -1,0 +1,1068 @@
+/* ============================================================
+   BASE STYLE (NEUTRAL) – NO COLORS, NO THEME OVERRIDES
+============================================================ */
+
+/* Body */
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    line-height: 1.42;
+    letter-spacing: 0.1px;
+    color: #2f2437;
+    background: #f9f1f8;
+}
+
+main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 12px 10px 72px;
+}
+
+/* Cards */
+.card {
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+}
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 18px;
+    padding: 12px 16px;
+    flex-wrap: nowrap; /* keep left and right on one row */
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1 1 auto; /* allow left area to shrink if needed */
+    min-width: 0; /* enable text truncation */
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column; /* stack title and subtitle */
+    align-items: flex-end;
+    justify-content: center;
+    gap: 6px;
+    flex: 0 0 auto; /* keep right area from growing */
+    min-width: 0;
+    max-width: 50%;
+}
+
+.header-right .title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right .title-row h1 {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+}
+
+.header-right .title-row .settings-btn {
+    flex: 0 0 auto;
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.brand-copy h1 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.brand-copy h1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Header title and subtitle handling */
+.app-header h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.subtitle {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.72;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+/* Allow list-select to shrink before right area overflows */
+.list-select {
+    flex: 0 1 220px;
+    min-width: 120px;
+    max-width: 60%;
+}
+
+.brand-icon {
+    display: inline-flex;
+    width: 46px;
+    height: 46px;
+    border-radius: 16px;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.35rem;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.subtitle {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.72;
+    line-height: 1.2;
+}
+
+.list-select {
+    width: 220px;
+    min-width: 160px;
+    max-width: 280px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    height: 44px;
+}
+
+.add-list-btn,
+.settings-btn {
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    padding: 0;
+}
+
+.add-list-btn {
+    font-size: 1.3rem;
+}
+
+@media (max-width: 760px) {
+    .app-header {
+        /* keep a single row but allow tighter spacing */
+        padding: 8px 10px;
+        gap: 8px 10px;
+    }
+
+    .header-right {
+        align-items: flex-end;
+        max-width: 55%;
+    }
+
+    .header-left {
+        justify-content: flex-start;
+        flex: 1 1 auto;
+    }
+
+    .list-select {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+.category-tabs,
+.favorites-section,
+.input-section,
+.search-section,
+.list-section {
+    position: relative;
+}
+
+.favorites-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+}
+
+.favorites-label {
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-right: 6px;
+}
+
+.favorites-buttons {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+}
+
+.favorites-buttons::-webkit-scrollbar {
+    display: none;
+}
+
+.input-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.input-row input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 40px;
+}
+
+.search-section input {
+    width: 100%;
+}
+
+#list {
+    padding: 0;
+    margin: 0;
+}
+
+#list li {
+    min-height: 54px;
+    width: 100% !important;
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.item-main {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+}
+
+.item-text {
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+}
+
+.item-action-btn {
+    border: none;
+    background: rgba(255,255,255,0.78);
+    color: var(--text);
+    min-width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.06);
+    cursor: pointer;
+}
+
+.item-action-btn__box {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.item-action-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 18, 24, 0.42);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 1500;
+}
+
+.item-action-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.item-action-panel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    max-width: 760px;
+    background: var(--card, #fff);
+    color: var(--text, #2f2437);
+    border-radius: 24px 24px 0 0;
+    box-shadow: 0 -12px 40px rgba(0,0,0,0.2);
+    padding: 14px 16px 24px;
+    transform: translateY(110%);
+    transition: transform 0.25s ease;
+    z-index: 1600;
+}
+
+.item-action-panel.show {
+    transform: translateY(0);
+}
+
+.item-action-handle {
+    width: 56px;
+    height: 5px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.15);
+    margin: 2px auto 10px;
+}
+
+.item-action-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.item-action-header h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.item-action-close {
+    border: none;
+    background: transparent;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.item-action-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.item-action-count-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.item-action-step {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 14px;
+    background: var(--btn-bg, #7c5cff);
+    color: var(--btn-text, #fff);
+    font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.item-action-count {
+    min-width: 44px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.item-action-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.95rem;
+}
+
+.item-action-field select {
+    padding: 10px 12px;
+    border-radius: 12px;
+    border: 1px solid var(--input-border, #d8c7dc);
+    background: var(--card, #fff);
+    color: var(--text, #2f2437);
+}
+
+.item-action-move-btn {
+    border: none;
+    border-radius: 14px;
+    padding: 12px 14px;
+    background: var(--btn-bg, #7c5cff);
+    color: var(--btn-text, #fff);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+body.panel-open {
+    overflow: hidden;
+}
+
+/* Tabs (Kategorie-Buttons) */
+section.category-tabs .tabs-container,
+.category-tabs .tabs-container {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tabs-container::-webkit-scrollbar {
+    display: none;
+}
+
+.tabs-container button {
+    flex: 0 0 auto;
+    border-radius: 12px;
+    padding: 8px 14px;
+    margin: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    border: 2px solid transparent; /* Theme setzt NUR border-color */
+    white-space: nowrap;
+    /* KEIN background → Kategorie-Farbe gewinnt */
+}
+
+/* Favorites */
+section.favorites-section .favorites-buttons,
+.favorites-section .favorites-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: 8px;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding-bottom: 4px;
+    scroll-snap-type: x proximity;
+    touch-action: pan-x;
+    -webkit-overflow-scrolling: touch;
+}
+
+.favorites-buttons::-webkit-scrollbar {
+    display: none;
+}
+
+.favorites-buttons button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+
+    border-radius: 12px;
+    padding: 6px 10px;
+    margin: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.2s;
+    white-space: nowrap;
+}
+
+/* List Items */
+#list li {
+    list-style: none;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+    background: transparent !important;
+    /* KEIN background, KEIN border-left → Kategorie-Farbe gewinnt */
+}
+
+#list li.done {
+    opacity: 0.55;
+    text-decoration: line-through;
+}
+
+/* Inputs */
+input {
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-size: 14px;
+    width: 100%;
+    transition: 0.2s;
+}
+
+/* Buttons */
+button {
+    border: none;
+    padding: 10px 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+}
+
+.add-btn {
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 12px;
+    font-size: 1.2rem;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* Icon Buttons */
+.icon-btn {
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 50%;
+}
+
+/* Floating Clear Button */
+.clear-done {
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    padding: 12px 18px;
+    border-radius: 18px;
+    font-size: 15px;
+}
+
+/* Settings Panel */
+#settingsPanel {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: 92vh;
+    overflow-y: auto;
+    border-radius: 24px 24px 0 0;
+    padding: 20px 18px 24px;
+    background: #ffffff;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.14);
+    transform: translateY(100%);
+    transition: transform 0.35s ease, opacity 0.25s ease;
+    opacity: 0;
+    z-index: 9999;
+}
+
+#settingsPanel.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.settings-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.28);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    pointer-events: none;
+    z-index: 9998;
+}
+
+.settings-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.settings-panel .settings-inner {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.settings-panel h2,
+.settings-panel h3 {
+    color: #2f2437;
+    margin: 0;
+}
+
+.settings-panel h2 {
+    margin-bottom: 18px;
+    font-size: 1.45rem;
+}
+
+.settings-panel h3 {
+    margin-top: 22px;
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+
+.settings-panel label {
+    opacity: 0.92;
+    color: #2f2437;
+    font-weight: 700;
+}
+
+//.settings-panel .form-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin: 10px 0 18px;
+    flex-wrap: wrap;
+}
+
+.settings-panel .form-row label {
+    flex: 0 0 140px;
+    min-width: 120px;
+    margin: 0;
+}
+
+//.settings-panel //.form-row select,
+//.settings-panel //.form-row input {
+    flex: 1 1 240px;
+    max-width: 100%;
+}
+
+.settings-panel select,
+.settings-panel input {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(242, 221, 237, 0.95);
+    background: #ffffff;
+    color: #2f2437;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.settings-panel .cat-editor-list div,
+.settings-panel .fav-editor-list div {
+    background: rgba(255, 238, 246, 0.95);
+    padding: 14px 16px;
+    border-radius: 18px;
+    margin-bottom: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.settings-panel .cat-editor-list div button,
+.settings-panel .fav-editor-list div button {
+    background: #ed4ca6;
+    color: #ffffff;
+    padding: 8px 14px;
+    border-radius: 14px;
+    font-size: 0.92rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+
+.settings-panel .cat-editor-add,
+.settings-panel .fav-editor-add {
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.settings-panel .cat-editor-add input,
+.settings-panel .fav-editor-add input {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.settings-panel .fav-editor-add select {
+    flex: 0 0 160px;
+    width: auto !important;
+    min-width: 120px;
+    max-width: 180px;
+}
+
+.settings-panel .fav-editor-add button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.settings-panel .cat-editor-list div span,
+.settings-panel .fav-editor-list div span {
+    flex: 1 1 auto;
+    white-space: normal;
+    min-width: 0;
+}
+
+.settings-panel .cat-delete,
+.settings-panel .fav-delete {
+    flex-shrink: 0;
+}
+
+.settings-panel .close-btn,
+.settings-panel .soft-close-btn {
+    width: 100%;
+    margin-top: 26px;
+    padding: 16px;
+    background: #ed4ca6;
+    color: #ffffff;
+    border-radius: 18px;
+    font-size: 1rem;
+    box-shadow: 0 8px 24px rgba(208, 76, 160, 0.22);
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+html.no-scroll,
+body.no-scroll {
+    height: 100%;
+    overflow: hidden !important;
+}
+
+@media (max-width: 640px) {
+    #settingsPanel {
+        padding: 16px 12px 20px;
+        border-radius: 18px 18px 0 0;
+    }
+    .settings-panel h2 {
+        font-size: 1.35rem;
+        margin-bottom: 16px;
+    }
+    .settings-panel h3 {
+        font-size: 1rem;
+        margin-top: 18px;
+    }
+    .settings-panel .form-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin: 12px 0 16px;
+    }
+    .settings-panel .form-row label {
+        flex: none;
+        min-width: auto;
+    }
+    .settings-panel .settings-inner {
+        padding: 0 6px;
+    }
+    .settings-panel .cat-editor-list div,
+    .settings-panel .fav-editor-list div {
+        padding: 14px 12px;
+    }
+    .settings-panel .cat-editor-list div span,
+    .settings-panel .fav-editor-list div span {
+        width: 100%;
+    }
+    .settings-panel .cat-editor-add,
+    .settings-panel .fav-editor-add {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .settings-panel .fav-editor-add select {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 520px) {
+    .settings-panel .fav-editor-add {
+        flex-wrap: wrap;
+    }
+    .settings-panel .fav-editor-add input {
+        flex: 1 1 100%;
+    }
+    .settings-panel .fav-editor-add select,
+    .settings-panel .fav-editor-add button {
+        flex: 0 0 100%;
+    }
+}
+
+@media (max-width: 420px) {
+    .settings-panel select,
+    .settings-panel input {
+        padding: 14px 16px;
+    }
+    .settings-panel .close-btn,
+    .settings-panel .soft-close-btn {
+        padding: 16px;
+    }
+}
+
+/* Category Editor */
+.cat-editor-item,
+.fav-editor-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid rgba(242, 221, 237, 0.9);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.cat-drag-handle,
+.fav-drag-handle {
+    width: 28px;
+    min-width: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #8c7893;
+    font-size: 1rem;
+}
+
+.cat-color-input {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    appearance: none;
+    border: 1px solid rgba(242, 221, 237, 0.9);
+}
+
+.cat-color-input::-webkit-color-swatch {
+    border-radius: 10px;
+}
+
+.cat-color-input::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+.cat-emoji-input {
+    width: 28px;
+    min-width: 28px;
+    text-align: center;
+    font-size: 16px;
+    padding: 4px;
+    border-radius: 12px;
+    border: 1px solid rgba(242, 221, 237, 0.9);
+    background: #ffffff;
+}
+
+.settings-panel .cat-color-input,
+.settings-panel .cat-emoji-input {
+    width: 28px !important;
+    min-width: 28px !important;
+    height: 28px !important;
+    min-height: 28px !important;
+    padding: 4px !important;
+    line-height: 28px !important;
+    flex: 0 0 auto !important;
+}
+
+.settings-panel .cat-text,
+.settings-panel .fav-text {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+    white-space: nowrap !important;
+}
+
+.settings-panel .cat-editor-item,
+.settings-panel .fav-editor-item {
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+}
+
+.cat-delete,
+.fav-delete {
+    width: 36px;
+    min-width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 640px) {
+    .cat-editor-item,
+    .fav-editor-item {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 12px;
+    }
+    .cat-drag-handle,
+    .fav-drag-handle,
+    .cat-color-input,
+    .cat-emoji-input,
+    .cat-delete,
+    .fav-delete {
+        flex: 0 0 auto;
+    }
+    .cat-color-input,
+    .cat-emoji-input {
+        width: 28px;
+        height: 28px;
+    }
+    .cat-text,
+    .fav-text {
+        flex: 1 1 100%;
+        white-space: normal;
+    }
+}
+
+/* Kategorie-Farbe als Hintergrund */
+#list li {
+    width: 100% !important;
+    display: flex;
+    background: var(--item-bg) !important;
+}
+
+/* Responsive Layout */
+@media (max-width: 840px) {
+    main {
+        padding: 12px 10px 70px;
+    }
+
+    .app-header {
+        display: grid;
+        grid-template-columns: 1fr minmax(140px, auto);
+        grid-template-rows: auto;
+        grid-template-areas: "left right";
+        align-items: center;
+        gap: 10px 14px;
+        padding: 10px;
+    }
+
+    .header-left,
+    .header-right {
+        width: auto;
+    }
+
+    .header-right {
+        justify-content: flex-end;
+    }
+
+    .header-center {
+        justify-content: flex-start;
+        text-align: left;
+        flex-direction: column;
+    }
+
+    .list-select {
+        width: 100%;
+        max-width: none;
+    }
+
+    .add-list-btn {
+        width: 40px;
+        min-width: 40px;
+        padding: 0;
+    }
+
+    .input-row {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    .add-btn {
+        min-width: 40px;
+        width: 40px;
+    }
+
+    .favorites-buttons {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+    }
+}
+
+@media (max-width: 640px) {
+    .app-header {
+        padding: 8px 10px;
+    }
+
+    .header-center {
+        justify-content: flex-start;
+        text-align: left;
+    }
+
+    .subtitle {
+        font-size: 0.82rem;
+    }
+
+    input,
+    .add-btn,
+    .clear-done,
+    .list-select {
+        min-height: 46px;
+    }
+
+    .favorites-buttons button {
+        flex: 0 1 auto;
+        min-width: 0;
+    }
+
+    .clear-done {
+        width: auto;
+        left: 12px;
+        right: 12px;
+        min-width: 140px;
+        padding: 12px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    button,
+    input {
+        font-size: 0.94rem;
+    }
+
+    .app-header h1 {
+        font-size: 1.0rem;
+    }
+
+    .card {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .subtitle {
+        display: none; /* hide subtitle on very small screens to avoid overflow */
+    }
+
+    .favorites-buttons button,
+    .tabs-container button {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .input-row {
+        flex-direction: row;
+        gap: 6px;
+    }
+
+    .add-btn {
+        width: 38px;
+        min-width: 38px;
+        padding: 0;
+    }
+}

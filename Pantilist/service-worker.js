@@ -1,82 +1,77 @@
 /* ============================================================
-   SERVICE WORKER – Version 3
+   SERVICE WORKER – Version 4 (Stable, No-Stale-Bugs)
 ============================================================ */
 
-const CACHE_VERSION = "v5";
-const CACHE_NAME = `shoppinglist-${CACHE_VERSION}`;
+const CACHE_VERSION = "v4";
+const CACHE_NAME = `pantilist-${CACHE_VERSION}`;
 
 const ASSETS = [
   "./",
   "./index.html",
-  "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png",
+  "./assets/css/layout.css",
+  "./assets/css/settings.css",
 
-  "./assets/css/base.css",
-  "./assets/css/theme-default.css",
-  "./assets/css/theme-forest.css",
-  "./assets/css/theme-diablo.css",
-  "./assets/css/theme-blackfantasy.css",
-  "./assets/css/theme-unicorn.css",
-  "./assets/css/theme-coreblue.css",
+  // Themes
+  "./assets/css/themes/theme-default.css",
+  "./assets/css/themes/theme-forest.css",
+  "./assets/css/themes/theme-diablo.css",
+  "./assets/css/themes/theme-blackfantasy.css",
+  "./assets/css/themes/theme-unicorn.css",
+  "./assets/css/themes/theme-coreblue.css",
 
-  "./assets/js/app.js"
+  // JS
+  "./assets/js/main.js",
+  "./assets/js/ui.js",
+  "./assets/js/list.js",
+  "./assets/js/settings.js",
+  "./assets/js/storage.js",
+  "./assets/js/state.js",
+  "./assets/js/categories.js",
+
+  // Icons
+  "./assets/img/icon-192.png",
+  "./assets/img/icon-512.png"
 ];
 
 /* ============================================================
-   INSTALL – Cache Assets
+   INSTALL – Cache neu aufbauen
 ============================================================ */
-
 self.addEventListener("install", event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
   );
-  self.skipWaiting();
+  self.skipWaiting(); // sofort aktiv
 });
 
 /* ============================================================
-   ACTIVATE – Remove Old Caches
+   ACTIVATE – Alte Caches löschen
 ============================================================ */
-
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
         keys
-          .filter(key => key.startsWith("shoppinglist-") && key !== CACHE_NAME)
+          .filter(key => key !== CACHE_NAME)
           .map(key => caches.delete(key))
       )
     )
   );
-  self.clients.claim();
+  self.clients.claim(); // sofort übernehmen
 });
 
 /* ============================================================
-   FETCH – Cache First, Network Fallback
+   FETCH – Immer zuerst Netzwerk, dann Cache
+   → verhindert alte Versionen
 ============================================================ */
-
 self.addEventListener("fetch", event => {
-  const request = event.request;
-
-  // Nur GET-Anfragen cachen
-  if (request.method !== "GET") return;
-
   event.respondWith(
-    caches.match(request).then(cached => {
-      if (cached) return cached;
-
-      return fetch(request)
-        .then(response => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(request, clone));
-          return response;
-        })
-        .catch(() => {
-          // Offline-Fallback für Navigation
-          if (request.mode === "navigate") {
-            return caches.match("./index.html");
-          }
-        });
-    })
+    fetch(event.request)
+      .then(response => {
+        // Antwort klonen und in Cache legen
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        return response;
+      })
+      .catch(() => caches.match(event.request)) // Offline fallback
   );
 });

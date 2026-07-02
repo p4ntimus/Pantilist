@@ -1,0 +1,72 @@
+/* ============================================================
+   LAYOUT ONLY – keine Farben, keine Schatten
+============================================================ */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", sans-serif;
+}
+
+main {
+  padding-bottom: 80px;
+}
+
+/* HEADER */
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px;
+}
+
+/* CATEGORY TABS */
+.category-tabs {
+  padding: 10px 16px;
+}
+
+.tabs-container {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+/* FAVORITEN */
+.favorites-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* INPUT */
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* LISTE */
+.list-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.list-select {
+    padding: 8px 12px;
+    border-radius: var(--radius-small);
+    border: 2px solid var(--accent-soft);
+    background: var(--card);
+    font-size: 0.9rem;
+    margin-right: 8px;
+}
+
+.add-list-btn {
+    padding: 8px 12px;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-small);
+    font-size: 1rem;
+    box-shadow: var(--shadow-soft);
+}
+

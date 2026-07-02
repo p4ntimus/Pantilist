@@ -1,0 +1,38 @@
+/* ============================================================
+   LAYOUT – Struktur der App
+============================================================ */
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.title-block h1 {
+  font-size: 1.4rem;
+}
+
+.subtitle {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+main {
+  padding: 14px;
+}
+
+.ad-top,
+.ad-footer {
+  background: var(--ad-bg);
+  color: var(--ad-text);
+  padding: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.list-section {
+  margin-top: 20px;
+}

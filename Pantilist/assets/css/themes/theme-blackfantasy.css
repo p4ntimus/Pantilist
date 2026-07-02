@@ -1,0 +1,54 @@
+/* ============================================================
+   BLACKFANTASY THEME
+============================================================ */
+
+[data-theme="blackfantasy"] {
+  /* Hintergrund */
+  --bg: #050509;
+  --bg-gradient: linear-gradient(180deg, #050509, #0a0a12);
+
+  /* Text */
+  --text: #f5f5f5;
+  --text-muted: #bfbfbf;
+
+  /* Karten */
+  --card: #14141c;
+  --card-hover: #1c1c26;
+
+  /* Akzent */
+  --accent: #9b59b6;
+  --accent-soft: #2b2135;
+
+  /* Tabs */
+  --tab-bg: #14141c;
+  --tab-border: #2b2135;
+  --tab-bg-active: #9b59b6;
+  --tab-text-active: #ffffff;
+
+  /* Favoriten */
+  --fav-bg: #2b2135;
+  --fav-bg-hover: #9b59b6;
+  --fav-text-hover: #ffffff;
+
+  /* Buttons */
+  --btn-bg: #9b59b6;
+  --btn-text: #ffffff;
+  --btn-bg-hover: #7d3fa0;
+
+  /* Inputs */
+  --input-border: #2b2135;
+
+  /* Anzeigen */
+  --ad-bg: #101018;
+  --ad-text: #c0a8ff;
+
+  /* Schatten */
+  --shadow-soft: 0 4px 12px rgba(0,0,0,0.4);
+  --shadow-card: 0 6px 18px rgba(0,0,0,0.5);
+
+  /* Separator */
+  --separator: rgba(255,255,255,0.08);
+
+  /* Danger */
+  --danger: #ff6b6b;
+}

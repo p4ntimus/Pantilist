@@ -5,82 +5,123 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pantilist</title>
 
-  <meta name="theme-color" content="#000000" id="theme-color-meta">
-  <meta name="description" content="Einfache, schöne Einkaufsliste mit Favoriten, Kategorien, Themes und PWA Support.">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
+  <!-- PWA -->
+  <meta name="theme-color" content="#ffe9f5" id="theme-color-meta">
   <link rel="manifest" href="manifest.json">
 
-  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-  <link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
+  <!-- Icons -->
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/img/icon-192.png">
+  <link rel="apple-touch-icon" sizes="512x512" href="assets/img/icon-512.png">
 
-  <link rel="stylesheet" href="assets/css/base.css">
-  <link rel="stylesheet" href="assets/css/theme-default.css" id="theme-default">
-  <link rel="stylesheet" href="assets/css/theme-forest.css" id="theme-forest" disabled>
-  <link rel="stylesheet" href="assets/css/theme-diablo.css" id="theme-diablo" disabled>
-  <link rel="stylesheet" href="assets/css/theme-blackfantasy.css" id="theme-blackfantasy" disabled>
-  <link rel="stylesheet" href="assets/css/theme-unicorn.css" id="theme-unicorn" disabled>
-  <link rel="stylesheet" href="assets/css/theme-coreblue.css" id="theme-coreblue" disabled>
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Themes -->
+  <link id="theme-default" rel="stylesheet" href="assets/css/themes/theme-default.css">
+  <link id="theme-forest" rel="stylesheet" href="assets/css/themes/theme-forest.css" disabled>
+  <link id="theme-diablo" rel="stylesheet" href="assets/css/themes/theme-diablo.css" disabled>
+  <link id="theme-blackfantasy" rel="stylesheet" href="assets/css/themes/theme-blackfantasy.css" disabled>
+  <link id="theme-unicorn" rel="stylesheet" href="assets/css/themes/theme-unicorn.css" disabled>
+  <link id="theme-coreblue" rel="stylesheet" href="assets/css/themes/theme-coreblue.css" disabled>
+
 </head>
 
 <body class="size-normal">
 
-  <header class="app-header">
-    <div class="title-block">
-      <h1>Einkaufsliste</h1>
+  <!-- HEADER -->
+  <header class="app-header card">
+    <div class="header-left">
+      <select id="listSelect" class="list-select" aria-label="Liste auswählen"></select>
+      <button id="addListBtn" class="add-list-btn" aria-label="Neue Liste hinzufügen">+</button>
+    </div>
+    <div class="header-right">
+      <div class="title-row">
+        <h1>Pantilist</h1>
+        <button class="settings-btn icon-btn" aria-label="Einstellungen">⚙️</button>
+      </div>
       <span class="subtitle">Dein smarter Einkaufshelfer</span>
     </div>
-    <button class="settings-btn" onclick="openSettings()">⚙️</button>
   </header>
+    
+      
+    
+    
 
-  <div class="ad-top">Hier könnte Werbung zur Finanzierung sein.</div>
 
   <main>
 
-    <!-- Kategorie-Auswahl -->
-    <section class="list-selector">
-      <label for="categorySelect">Kategorie:</label>
-      <select id="categorySelect" onchange="changeActiveCategory()"></select>
+    <!-- KATEGORIEN (TABS) -->
+    <section class="category-tabs card">
+        <div id="categoryTabs" class="tabs-container"></div>
     </section>
 
-    <!-- Eingabe -->
-    <section class="input-section">
+    <!-- FAVORITEN -->
+    <section class="favorites-section card">
+      <span class="favorites-label">Favoriten</span>
+      <div id="favoritesMain" class="favorites-buttons"></div>
+    </section>
+
+    <!-- EINGABE -->
+    <section class="input-section card">
       <div class="input-row">
-        <input id="itemInput" placeholder="Neuer Eintrag">
-        <button class="add-btn" onclick="addItem()">+</button>
-      </div>
-
-      <!-- Favoriten -->
-      <div class="favorites-row">
-        <span class="favorites-label">Schnell hinzufügen:</span>
-        <div class="favorites-buttons" id="favoritesMain"></div>
+        <input id="itemInput" placeholder="Artikel eingeben…">
+        <button class="add-btn">+</button>
       </div>
     </section>
 
-    <!-- Suche -->
-    <section class="search-section">
-      <input id="searchInput" placeholder="Liste durchsuchen…" oninput="filterList()">
+    <!-- SUCHE -->
+    <section class="search-section card">
+      <input id="searchInput" placeholder="Liste durchsuchen…">
     </section>
 
-    <!-- Liste -->
-    <section class="list-section">
+    <!-- LISTE -->
+    <section class="list-section card">
       <ul id="list"></ul>
-      <button class="clear-done" onclick="clearDone()">Erledigte löschen</button>
     </section>
 
   </main>
 
-  <footer class="ad-footer">Hier könnte Werbung zur Finanzierung sein.</footer>
+  <div id="itemActionBackdrop" class="item-action-backdrop" hidden></div>
+  <div id="itemActionPanel" class="item-action-panel" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="item-action-handle"></div>
+    <div class="item-action-header">
+      <h3 id="itemActionTitle">Artikel</h3>
+      <button id="itemActionClose" class="item-action-close" type="button" aria-label="Panel schließen">✕</button>
+    </div>
+
+    <div class="item-action-body">
+      <div class="item-action-count-row">
+        <button class="item-action-step" type="button" data-step="minus">−</button>
+        <span id="itemActionCount" class="item-action-count">1</span>
+        <button class="item-action-step" type="button" data-step="plus">+</button>
+      </div>
+
+      <label class="item-action-field">
+        <span>Einheit</span>
+        <select id="itemActionUnit"></select>
+      </label>
+
+      <label class="item-action-field">
+        <span>In andere Liste verschieben</span>
+        <select id="itemActionList"></select>
+      </label>
+
+      <button id="itemActionMoveBtn" class="item-action-move-btn" type="button">Verschieben</button>
+    </div>
+  </div>
+
+  <!-- FLOATING DELETE BUTTON -->
+  <button class="clear-done">Erledigte löschen</button>
 
   <!-- SETTINGS PANEL -->
-  <div id="settingsPanel" class="settings-panel hidden">
-    <h2>Einstellungen</h2>
+  <div id="settingsPanel" class="settings-panel">
+      <div class="settings-inner">
+      <h2>Einstellungen</h2>
 
-    <label for="themeSelect">Theme:</label>
-    <select id="themeSelect" onchange="changeTheme()">
+    <div class="form-row">
+      <label for="themeSelect">Theme</label>
+      <select id="themeSelect">
       <option value="default">Sanft & freundlich</option>
       <option value="forest">Wald & Natur</option>
       <option value="diablo">Diablo</option>
@@ -88,63 +129,46 @@
       <option value="unicorn">Einhorn</option>
       <option value="coreblue">Coreblue</option>
     </select>
+    </div>
 
-    <label for="sizeSelect">Layout-Größe:</label>
-    <select id="sizeSelect" onchange="changeSize()">
+    <div class="form-row">
+      <label for="sizeSelect">Layout-Größe</label>
+      <select id="sizeSelect">
       <option value="normal">Normal</option>
       <option value="large">Groß</option>
       <option value="xlarge">Extra groß</option>
     </select>
+    </div>
 
     <hr class="settings-separator">
 
-    <!-- Kategorien verwalten -->
     <h3>Kategorien verwalten</h3>
+    <div id="categoryEditor"></div>
 
-    <div class="cat-editor">
-      <div class="cat-editor-list" id="categoryEditor"></div>
-
-      <div class="cat-editor-add">
-        <input id="catInput" placeholder="Neue Kategorie (z.B. Getränke)">
-        <button onclick="saveNewCategory()">Hinzufügen</button>
-      </div>
-
-      <p class="cat-hint">
-        Tipp: Kategorien per Drag & Drop sortieren.  
-        Standard-Kategorien können nicht gelöscht werden.
-      </p>
+    <div class="cat-editor-add">
+      <input id="catInput" placeholder="Neue Kategorie">
+      <button id="catAddBtn">Hinzufügen</button>
     </div>
 
     <hr class="settings-separator">
 
-    <!-- Favoriten verwalten -->
     <h3>Favoriten verwalten</h3>
+    <div id="favoritesEditor"></div>
 
-    <div class="fav-editor">
-      <div class="fav-editor-list" id="favoritesEditor"></div>
-
-      <div class="fav-editor-add">
-        <input id="favInput" placeholder="Neuer Favorit (z.B. Nudeln)">
-        <button onclick="saveNewFavorite()">Hinzufügen</button>
-      </div>
-
-      <p class="fav-hint">
-        Tipp: Favoriten per Drag & Drop sortieren, lang drücken / Rechtsklick zum Löschen.
-      </p>
+    <div class="fav-editor-add">
+        <input id="favInput" placeholder="Neuer Favorit">
+        <select id="favCategorySelect"></select>
+        <button id="favAddBtn">Hinzufügen</button>
     </div>
 
-    <button class="close-btn" onclick="closeSettings()">Schließen</button>
+    <button class="close-btn">Schließen</button>
+      </div>
   </div>
 
-  <script src="assets/js/app.js"></script>
+  <div id="settingsBackdrop" class="settings-backdrop" aria-hidden="true"></div>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js');
-      });
-    }
-  </script>
+  <!-- JS -->
+  <script type="module" src="assets/js/main.js"></script>
 
 </body>
 </html>

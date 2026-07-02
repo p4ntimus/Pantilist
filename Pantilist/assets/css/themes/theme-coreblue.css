@@ -1,0 +1,58 @@
+/* ============================================================
+   COREBLUE THEME
+============================================================ */
+
+[data-theme="coreblue"] {
+  /* Hintergrund */
+  --bg: #08111f;
+  --bg-gradient: linear-gradient(180deg, #0f1c2e, #08111f);
+
+  /* Text */
+  --text: #eef4ff;
+  --text-muted: #9db0cc;
+
+  /* Karten */
+  --card: #14243a;
+  --card-hover: #1a304d;
+
+  /* Akzent */
+  --accent: #007fff;
+  --accent-soft: rgba(0, 127, 255, 0.12);
+
+  /* Tabs */
+  --tab-bg: #14243a;
+  --tab-border: rgba(155, 185, 230, 0.18);
+  --tab-bg-active: #007fff;
+  --tab-text-active: #ffffff;
+
+  /* Favoriten */
+  --fav-bg: rgba(0, 127, 255, 0.12);
+  --fav-bg-hover: #007fff;
+  --fav-text-hover: #ffffff;
+
+  /* Buttons */
+  --btn-bg: linear-gradient(135deg, #007fff, #005fa3);
+  --btn-text: #ffffff;
+  --btn-bg-hover: #005fa3;
+
+  /* Inputs */
+  --input-border: rgba(155, 185, 230, 0.18);
+
+  /* Schatten */
+  --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.25);
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.35);
+
+  /* Radius */
+  --radius-small: 10px;
+  --radius-medium: 16px;
+  --radius-large: 22px;
+
+  /* Separator */
+  --separator: rgba(255, 255, 255, 0.08);
+
+  /* Danger */
+  --danger: #ff6b6b;
+
+  /* Glow */
+  --glow: 0 0 24px rgba(0, 127, 255, 0.25);
+}
